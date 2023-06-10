@@ -19,6 +19,7 @@ import io
 import logging
 import pathlib
 import datetime
+import random
 
 import numpy as np
 from PIL import Image  # pytype: disable=import-error
@@ -85,8 +86,7 @@ def main():
     with ModelClient(args.url, "StableDiffusion_1_5", init_timeout_s=args.init_timeout_s) as client:
         for req_idx in range(1, args.iterations + 1):
             logger.debug(f"Sending request ({req_idx}).")
-            prompt_id = req_idx % len(prompts)
-            prompt = prompts[prompt_id]
+            prompt = random.choice(prompts)
             prompt = np.array([[prompt]])
             prompt = np.char.encode(prompt, "utf-8")
             logger.info(f"Prompt ({req_idx}): {prompt}")
