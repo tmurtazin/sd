@@ -33,7 +33,8 @@ IMAGE_FORMAT = "JPEG"
 
 pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
 pipe = pipe.to(DEVICE)
-
+pipe.safety_checker = None
+pipe.requires_safety_checker = False
 
 def _encode_image_to_base64(image):
     raw_bytes = io.BytesIO()
