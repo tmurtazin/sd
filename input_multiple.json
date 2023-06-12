@@ -1,0 +1,19 @@
+{
+  "id": "0",
+  "inputs": [
+    {
+      "name": "prompt",
+      "shape": [2, 1],
+      "datatype": "BYTES",
+      "parameters": {},
+      "data": ["An image of a squirrel in Picasso style", "An image of a dog in Picasso style"]
+    },
+    {
+      "name": "img_size",
+      "shape": [2, 1],
+      "datatype": "INT64",
+      "parameters": {},
+      "data": [512, 768]
+    }
+  ]
+}
