@@ -72,11 +72,16 @@ def main():
     logging.basicConfig(level=log_level, format="%(asctime)s - %(levelname)s - %(name)s: %(message)s")
 
     prompts = [
-        "An image of a squirrel in Picasso style",
-        "An image of a dog in Picasso style",
-        "An image of a cat in Picasso style",
-        "An image of a fish in Picasso style",
-        "An image of a mouse in Picasso style",
+        "calendar with marked dates",
+        "laptop with online store",
+        "woman typing on laptop",
+        "smiling businesswoman",
+        "man in suit",
+        "smiling businesswoman",
+        "man in suit",
+        "portrait of a team of 4 smiling people",
+        "portrait of woman with laptop",
+        "portrait of woman in glasses"
     ]
 
     img_size = np.array([[512]])
