@@ -35,6 +35,7 @@ pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5",
 pipe = pipe.to(DEVICE)
 pipe.safety_checker = None
 pipe.requires_safety_checker = False
+pipe.negative_prompt = '(deformed, distorted, disfigured, doll:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation';
 
 def _encode_image_to_base64(image):
     raw_bytes = io.BytesIO()
