@@ -61,6 +61,7 @@ def _infer_fn(
             prompt=prompts,
             height=img_size,
             width=img_size,
+            negative_prompt = '(deformed, distorted, disfigured, doll:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation'
         ).images
     ):
         raw_data = _encode_image_to_base64(image)
