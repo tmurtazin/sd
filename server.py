@@ -35,7 +35,8 @@ pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5",
 pipe = pipe.to(DEVICE)
 pipe.safety_checker = None
 pipe.requires_safety_checker = False
-negative_prompt = ['(deformed, distorted, disfigured, doll:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation'];
+negative_prompt = '(deformed, distorted, disfigured, doll:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation';
+fixed_addon = ' ,highly detailed, 4 k, hdr, smooth, sharp focus, high resolution, award – winning photo';
 
 def _encode_image_to_base64(image):
     raw_bytes = io.BytesIO()
@@ -51,7 +52,7 @@ def _infer_fn(
     prompt: np.ndarray,
     img_size: np.int64,
 ):
-    prompts = [np.char.decode(p.astype("bytes"), "utf-8").item() for p in prompt]
+    prompts = [(np.char.decode(p.astype("bytes"), "utf-8").item() + fixed_addon) for p in prompt]
     negatives = [negative_prompt for p in prompt]
     LOGGER.debug(f"Prompts: {prompts}")
     LOGGER.debug(f"Image Size: {img_size}x{img_size}")
