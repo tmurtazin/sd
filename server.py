@@ -29,7 +29,7 @@ from pytriton.triton import Triton, TritonConfig
 LOGGER = logging.getLogger("examples.huggingface_stable_diffusion.server")
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-IMAGE_FORMAT = "JPEG"
+IMAGE_FORMAT = "PNG"
 
 pipe = StableDiffusionPipeline.from_ckpt(
     "https://huggingface.co/XpucT/Reliberate/blob/main/Reliberate.safetensors",

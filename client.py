@@ -93,7 +93,7 @@ def main():
 
             for idx, image in enumerate(result_dict["image"]):
                 file_idx = req_idx + idx
-                file_path = results_path / str(file_idx) / "image.jpeg"
+                file_path = results_path / str(file_idx) / "image.png"
                 file_path.parent.mkdir(parents=True, exist_ok=True)
                 msg = base64.b64decode(image)
                 buffer = io.BytesIO(msg)

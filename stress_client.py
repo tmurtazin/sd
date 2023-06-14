@@ -101,7 +101,7 @@ def main():
 
             for idx, image in enumerate(result_dict["image"]):
                 timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S-%f")
-                file_path = results_path / f"img_{timestamp}.jpeg"
+                file_path = results_path / f"img_{timestamp}.png"
                 file_path.parent.mkdir(parents=True, exist_ok=True)
                 msg = base64.b64decode(image)
                 buffer = io.BytesIO(msg)
