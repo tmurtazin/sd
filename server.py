@@ -31,12 +31,15 @@ LOGGER = logging.getLogger("examples.huggingface_stable_diffusion.server")
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 IMAGE_FORMAT = "JPEG"
 
-pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+pipe = StableDiffusionPipeline.from_ckpt(
+    "https://huggingface.co/XpucT/Reliberate/blob/main/Reliberate.safetensors",
+    torch_dtype=torch.float16,
+)
 pipe = pipe.to(DEVICE)
 pipe.safety_checker = None
 pipe.requires_safety_checker = False
 negative_prompt = '(deformed, distorted, disfigured, doll:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, (mutated hands and fingers:1.4), disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation';
-fixed_addon = ' ,highly detailed, 4 k, hdr, smooth, sharp focus, high resolution, award – winning photo';
+fixed_addon = '';
 
 def _encode_image_to_base64(image):
     raw_bytes = io.BytesIO()
