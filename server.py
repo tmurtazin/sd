@@ -34,6 +34,7 @@ IMAGE_FORMAT = "PNG"
 pipe = StableDiffusionPipeline.from_ckpt(
     "https://huggingface.co/XpucT/Reliberate/blob/main/Reliberate.safetensors",
     torch_dtype=torch.float16,
+    cheduler_type='euler-ancestral',
 )
 pipe = pipe.to(DEVICE)
 pipe.safety_checker = None

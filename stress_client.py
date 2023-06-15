@@ -75,7 +75,6 @@ def main():
         "calendar with marked dates",
         "laptop with online store",
         "woman typing on laptop",
-        "smiling businesswoman",
         "man in suit",
         "smiling businesswoman",
         "man in suit",
