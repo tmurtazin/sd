@@ -2,6 +2,7 @@
 
 curl -X POST \
   -H "Content-Type: application/json"  \
+  -H "x-api-key: YOUR_API_KEY"  \
     --data-raw '{
   "id": "0",
   "inputs": [
