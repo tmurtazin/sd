@@ -50,23 +50,25 @@ def _encode_image_to_base64(image):
 
 
 @batch
-@group_by_values("img_size")
-@first_value("img_size")
+@group_by_values("img_width")
+@first_value("img_width")
 def _infer_fn(
     prompt: np.ndarray,
-    img_size: np.int64,
+    img_width: np.int64,
+    img_height: np.int64,
+    #upscale: np.int64,
 ):
     prompts = [(np.char.decode(p.astype("bytes"), "utf-8").item() + fixed_addon) for p in prompt]
     negatives = [negative_prompt for p in prompt]
     LOGGER.debug(f"Prompts: {prompts}")
-    LOGGER.debug(f"Image Size: {img_size}x{img_size}")
+    LOGGER.debug(f"Image Size: {img_width}x{img_height}")
 
     outputs = []
     for idx, image in enumerate(
         pipe(
             prompt=prompts,
-            height=img_size,
-            width=img_size,
+            height=img_width,
+            width=img_height,
             negative_prompt=negatives
         ).images
     ):
@@ -106,7 +108,9 @@ def main():
             infer_func=_infer_fn,
             inputs=[
                 Tensor(name="prompt", dtype=np.bytes_, shape=(1,)),
-                Tensor(name="img_size", dtype=np.int64, shape=(1,)),
+                Tensor(name="img_width", dtype=np.int64, shape=(1,)),
+                Tensor(name="img_height", dtype=np.int64, shape=(1,)),
+                #Tensor(name="upscale", dtype=np.int64, shape=(1,)),
             ],
             outputs=[
                 Tensor(name="image", dtype=np.bytes_, shape=(1,)),
