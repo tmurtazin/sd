@@ -9,11 +9,18 @@
       "data": ["An image of a squirrel in Picasso style"]
     },
     {
-      "name": "img_size",
+      "name": "img_width",
       "shape": [1, 1],
       "datatype": "INT64",
       "parameters": {},
       "data": [512]
+    },
+    {
+      "name": "img_height",
+      "shape": [1, 1],
+      "datatype": "INT64",
+      "parameters": {},
+      "data": [768]
     }
   ]
 }

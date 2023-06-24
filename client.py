@@ -75,7 +75,8 @@ def main():
         "A running dog in the fields of trees in Manga style",
     ]
 
-    img_size = np.array([[512]])
+    img_width = np.array([[540]])
+    img_height = np.array([[960]])
     results_path = pathlib.Path(args.results_path)
     results_path.mkdir(parents=True, exist_ok=True)
 
@@ -88,7 +89,7 @@ def main():
             prompt = np.char.encode(prompt, "utf-8")
             logger.info(f"Prompt ({req_idx}): {prompt}")
             logger.info(f"Image size ({req_idx}): {img_size}")
-            result_dict = client.infer_batch(prompt=prompt, img_size=img_size)
+            result_dict = client.infer_batch(prompt=prompt, img_width=img_width, img_height=img_height)
             logger.debug(f"Result for for request ({req_idx}).")
 
             for idx, image in enumerate(result_dict["image"]):

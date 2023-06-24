@@ -14,11 +14,18 @@ curl -X POST \
       "data": ["An image of a squirrel in Picasso style", "Realistic photo of a cat"]
     },
     {
-      "name": "img_size",
+      "name": "img_width",
       "shape": [2, 1],
       "datatype": "INT64",
       "parameters": {},
-      "data": [512, 512]
+      "data": [512, 768]
+    },
+    {
+      "name": "img_height",
+      "shape": [2, 1],
+      "datatype": "INT64",
+      "parameters": {},
+      "data": [512, 768]
     }
   ]
     }' \
