@@ -95,7 +95,7 @@ def main():
             prompt = np.array([[prompt]])
             prompt = np.char.encode(prompt, "utf-8")
             logger.info(f"Prompt ({req_idx}): {prompt}")
-            logger.info(f"Image size ({req_idx}): {img_size}")
+            logger.info(f"Image size ({req_idx}): {img_width} x {img_height}")
             result_dict = client.infer_batch(prompt=prompt, img_width=img_width, img_height=img_height)
             logger.debug(f"Result for for request ({req_idx}).")
 
