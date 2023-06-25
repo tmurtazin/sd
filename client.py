@@ -75,8 +75,8 @@ def main():
         "A running dog in the fields of trees in Manga style",
     ]
 
-    img_width = np.array([[540]])
-    img_height = np.array([[960]])
+    img_width = np.array([[360]])
+    img_height = np.array([[640]])
     results_path = pathlib.Path(args.results_path)
     results_path.mkdir(parents=True, exist_ok=True)
 
