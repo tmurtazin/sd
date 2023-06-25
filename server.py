@@ -67,8 +67,8 @@ def _infer_fn(
     for idx, image in enumerate(
         pipe(
             prompt=prompts,
-            height=img_width,
-            width=img_height,
+            width=img_width.item(),
+            height=img_height.item(),
             negative_prompt=negatives
         ).images
     ):
