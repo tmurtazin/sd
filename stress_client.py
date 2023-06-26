@@ -83,8 +83,21 @@ def main():
         "portrait of woman in glasses"
     ]
 
-    img_width = np.array([[360]])
-    img_height = np.array([[640]])
+    widths = [
+        360,
+        512,
+        640,
+        768
+    ]
+
+    heights = [
+        360,
+        512,
+        640,
+        768
+    ]
+
+
     results_path = pathlib.Path(args.results_path)
     results_path.mkdir(parents=True, exist_ok=True)
 
@@ -94,6 +107,10 @@ def main():
             prompt = random.choice(prompts)
             prompt = np.array([[prompt]])
             prompt = np.char.encode(prompt, "utf-8")
+            img_width = random.choice(widths)
+            img_width = np.array([[img_width]])
+            img_height = random.choice(heights)
+            img_height = np.array([[img_height]])
             logger.info(f"Prompt ({req_idx}): {prompt}")
             logger.info(f"Image size ({req_idx}): {img_width} x {img_height}")
             result_dict = client.infer_batch(prompt=prompt, img_width=img_width, img_height=img_height)
