@@ -50,8 +50,8 @@ def _encode_image_to_base64(image):
 
 
 @batch
-@group_by_values("img_width")
-@first_value("img_width")
+@group_by_values("img_width","img_height")
+@first_value("img_width","img_height")
 def _infer_fn(
     prompt: np.ndarray,
     img_width: np.int64,
@@ -67,8 +67,8 @@ def _infer_fn(
     for idx, image in enumerate(
         pipe(
             prompt=prompts,
-            width=img_width.item(),
-            height=img_height.item(),
+            width=img_width,
+            height=img_height,
             negative_prompt=negatives
         ).images
     ):
